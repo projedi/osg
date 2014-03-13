@@ -78,7 +78,7 @@ SET(OpenThreads_SOURCE_DIR ${OpenSceneGraph_SOURCE_DIR})
 
 # We have some custom .cmake scripts not in the official distribution.
 # Maybe this can be used override existing behavior if needed?
-SET(CMAKE_MODULE_PATH "${OpenSceneGraph_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}")
+SET(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${OpenSceneGraph_SOURCE_DIR}/CMakeModules")
 
 ## Option to enable Android build using AndroidNDK
 OPTION(OSG_BUILD_PLATFORM_ANDROID OFF)
