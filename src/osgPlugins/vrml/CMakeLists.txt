@@ -34,7 +34,13 @@ ELSE()
 ENDIF()
 
 INCLUDE_DIRECTORIES(${BOOST_ROOT}/include)
-SET(TARGET_EXTERNAL_LIBRARIES ${BOOST_ROOT}/lib/libboost_system.lib Ws2_32.lib)
+if(MSVC)
+   SET(TARGET_EXTERNAL_LIBRARIES ${BOOST_ROOT}/lib/libboost_system.lib Ws2_32.lib)
+elseif(APPLE)
+   # TODO: OS X support
+elseif("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+   SET(TARGET_EXTERNAL_LIBRARIES ${BOOST_ROOT}/lib/libboost_system.a)
+endif()
 
 SET(TARGET_SRC 
     IndexedFaceSet.cpp
