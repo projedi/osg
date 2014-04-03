@@ -638,10 +638,14 @@ ENDIF(BUILD_OSG_EXAMPLES AND NOT ANDROID)
 # The downside to the latter is that it is harder to build those
 # potentially redundant modules.)
 
+if(APPLE)
+    option(OSG_USE_QUICKTIME "Use QuickTime" ON)
+endif()
+
 # Image readers/writers depend on 3rd party libraries except for OS X which
 # can use Quicktime.
 IF(NOT ANDROID)
-    IF(NOT APPLE)
+    IF(NOT APPLE OR NOT OSG_USE_QUICKTIME)
         FIND_PACKAGE(GIFLIB)
         FIND_PACKAGE(JPEG)
         FIND_PACKAGE(PNG)
